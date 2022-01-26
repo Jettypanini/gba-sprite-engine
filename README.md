@@ -30,6 +30,7 @@ The song heard in this game is "Spider dance" by Toby Fox from the RPG game Unde
 <img src="https://github.com/Jettypanini/gba-sprite-engine/blob/master/JethroPans_TDShooter/img/screenshot.PNG">
 
 ## Domain model
+When starting the game, the player can see the home screen. In this home screen the playable character can be seen shooting a bullet at the zombified machop, summarizing the game. After pressing the "Start" button the level starts. The background "stage1", the music "SpiderDance" and the sprites "figures" are being loaded.
 <img src="https://github.com/Jettypanini/gba-sprite-engine/blob/master/JethroPans_TDShooter/img/domain_model.png">
 
 ## Authors

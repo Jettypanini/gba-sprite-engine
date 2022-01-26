@@ -44,10 +44,7 @@ The song heard in this game is "Spider dance" by Toby Fox from the RPG game Unde
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## References
-Machop sprite: [https://www.spriters-resource.com/game_boy_advance/pokemonfireredleafgreen/sheet/3711/](https://www.spriters-resource.com/game_boy_advance/pokemonfireredleafgreen/sheet/3711/)
-
-Materials used in the map: [https://www.spriters-resource.com/game_boy_advance/pokemonfireredleafgreen/sheet/3736/](https://www.spriters-resource.com/game_boy_advance/pokemonfireredleafgreen/sheet/3736/)
-
-Guy: [http://pixelartmaker.com/art/1b679450a241211](http://pixelartmaker.com/art/1b679450a241211)
-
-Bullet: [https://www.spriters-resource.com/game_boy_advance/gtadv/sheet/4612/](https://www.spriters-resource.com/game_boy_advance/gtadv/sheet/4612/)
+* Machop sprite: [https://www.spriters-resource.com/game_boy_advance/pokemonfireredleafgreen/sheet/3711/](https://www.spriters-resource.com/game_boy_advance/pokemonfireredleafgreen/sheet/3711/)
+* Materials used in the map: [https://www.spriters-resource.com/game_boy_advance/pokemonfireredleafgreen/sheet/3736/](https://www.spriters-resource.com/game_boy_advance/pokemonfireredleafgreen/sheet/3736/)
+* Guy: [http://pixelartmaker.com/art/1b679450a241211](http://pixelartmaker.com/art/1b679450a241211)
+* Bullet: [https://www.spriters-resource.com/game_boy_advance/gtadv/sheet/4612/](https://www.spriters-resource.com/game_boy_advance/gtadv/sheet/4612/)

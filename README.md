@@ -35,7 +35,7 @@ The song heard in this game is "Spider dance" by Toby Fox from the RPG game Unde
 * *Wouter Groeneveld* - Lecturer - [GitHub](https://github.com/wgroeneveld)
 * *Jethro Pans* - Student - [Github](https://github.com/Jettypanini)
 
-## Used tools
+## Acknowledgements
 * high-level object-oriented Gameboy Advance sprite engine library: [gba-sprite-engine](https://github.com/wgroeneveld/gba-sprite-engine)
 * GBA image transmogrifier: [Grit](https://www.coranac.com/man/grit/html/grit.htm)
 * Sound to GBA file converter: [Audacity](https://www.audacityteam.org/download/)

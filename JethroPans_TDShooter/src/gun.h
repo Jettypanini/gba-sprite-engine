@@ -5,12 +5,8 @@
 
 class Gun {
 public:
-	std::vector<Bullets> bullets;
-	std::vector<Sprite*> bullet_sprites;
-	SpriteBuilder<Sprite> builder;
-
-	void shoot(short pos_x, short pos_y, short rotate);
-	std::vector<Sprite*> get_bullets();
+	Gun() {}
+	virtual void shoot(std::vector<Bullets> &bul, short pos_x, short pos_y, int rotate) {}
 };
 
 #endif

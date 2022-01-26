@@ -3,13 +3,13 @@
 #include <libgba-sprite-engine/palette/palette_manager.h>
 #include <libgba-sprite-engine/allocator.h>
 
-#include "level_one.h"
+#include "starting_screen.h"
 
 int main() {
     std::shared_ptr<GBAEngine> engine(new GBAEngine());
 
-    LevelOne* stage1 = new LevelOne(engine);
-    engine->setScene(stage1);
+    StartingScreen* start = new StartingScreen(engine);
+    engine->setScene(start);
 
     while (true) {
         engine->update();

@@ -6,9 +6,12 @@
 std::vector<Sprite *> LevelOne::sprites() {
     std::vector<Sprite*> sprites;
 	for(auto& bullet : bullets) {
-        sprites.push_back(bullet.get());
+        sprites.push_back(bullet.get_bullet());
     }
-    sprites.push_back(player.get());
+	for(auto& enemy : enemies) {
+        sprites.push_back(enemy.get_enemy());
+    }
+	sprites.push_back(player.get());
 	return sprites;
 }
 
@@ -22,19 +25,31 @@ void LevelOne::load() {
 	foregroundPalette = std::unique_ptr<ForegroundPaletteManager>(new ForegroundPaletteManager(spritesPal, sizeof(spritesPal)));
     backgroundPalette = std::unique_ptr<BackgroundPaletteManager>(new BackgroundPaletteManager(stage1Pal, sizeof(stage1Pal)));
 	
+	for(int i=0; i<5; i++) {
+		bullets.push_back(Bullets());
+		bullets.at(i).set_empty();
+	}
+	
 	player = affineBuilder
             .withData(guyTiles, sizeof(guyTiles))
 			.withSize(SIZE_32_32)
             .withLocation(player_x, player_y)
-            .buildPtr();	
-	
-	spriteBuilder = std::unique_ptr<SpriteBuilder<Sprite>>(new SpriteBuilder<Sprite>);
-	bulletSprite = spriteBuilder->withData(bulletTiles, sizeof(bulletTiles))
-            .withSize(SIZE_8_8)
             .buildPtr();
+	
+	enemies.push_back(Enemies(48, 112));
+	enemies.push_back(Enemies(160, 128));
+	enemies.push_back(Enemies(128, 144));
+	enemies.push_back(Enemies(64, 160));
+	enemies.push_back(Enemies(176, 208));
+	enemies.push_back(Enemies(48, 232));
+	enemies.push_back(Enemies(80, 248));
+	enemies.push_back(Enemies(64, 248));
+	enemies.push_back(Enemies(112, 264));
+	enemies.push_back(Enemies(144, 288));
+	enemies.push_back(Enemies(176, 336));
+	enemies.push_back(Enemies(32, 384));
+	enemies.push_back(Enemies(176, 416));
 			
-	create_bullet();
-
     stage1 = std::unique_ptr<Background>(new Background(1, stage1Tiles, sizeof(stage1Tiles), stage1Map, sizeof(stage1Map), 0, 1, 2));
     stage1.get()->useMapScreenBlock(16);
 	
@@ -87,15 +102,19 @@ bool LevelOne::check_collision(short next_pos_x, short next_pos_y, short next_po
 	}
 }
 
-void LevelOne::create_bullet() {
-	bullets.push_back( spriteBuilder->withLocation(player_x+16, player_y+16)
-		.buildWithDataOf(*bulletSprite.get()) );
-}
-
 void LevelOne::tick(u16 keys) {
+	if(keys & KEY_L) {
+		gun = new Glock();
+    } else if(keys & KEY_R) {
+		gun = new Shotgun();
+	}
 	if(keys & KEY_B) {
-		bullets.push_back( spriteBuilder->withLocation(player_x+16, player_y+16)
-		.buildWithDataOf(*bulletSprite.get()) );
+		if(ris_edge == 0) {
+			gun->shoot(bullets, player_x, player_y, player_rotate);
+			ris_edge = 1;
+		}
+	} else {
+		ris_edge = 0;
 	}
 	
 	if(keys & KEY_LEFT) {
@@ -112,7 +131,6 @@ void LevelOne::tick(u16 keys) {
 			}
 		}
 		player_rotate = 0x0000;
-		create_bullet();
     } else if(keys & KEY_UP) {
 		if(!check_collision(player_x+16, player_y+8, map_y)) {
 			if(map_y > 0) {
@@ -120,6 +138,10 @@ void LevelOne::tick(u16 keys) {
 				player_y -= 1;
 				} else if(map_y == 1 & player_y > -8) {
 					player_y -= 1;
+				} else if(map_y == 1 & player_y == -8) {
+					if(!engine->isTransitioning()) {
+						engine->transitionIntoScene(new EndingScreen(engine), new FadeOutScene(2));
+					}
 				} else {
 					map_y -= 1;
 				}
@@ -142,8 +164,38 @@ void LevelOne::tick(u16 keys) {
     }
 	player->rotate(player_rotate);
 	player.get()->moveTo(player_x, player_y);
-    stage1.get()->scroll(map_x, map_y);
-	for(auto& bullet : bullets) {
-        bullet.get()->moveTo(player_x+16, player_y+16);
+	for(auto& enemy : enemies) {
+        enemy.move_enemy(map_y);
     }
+    stage1.get()->scroll(map_x, map_y);
+	
+	for(auto& enemy : enemies) {
+		if(enemy.get_on_screen()) {
+			if((player_x > enemy.get_x()-16) & (player_x < enemy.get_x()+8) & (player_y > enemy.get_y()-16) & (player_y < enemy.get_y()+8) ) {
+				if(!engine->isTransitioning()) {
+					engine->transitionIntoScene(new Failed(engine), new FadeOutScene(2));
+				}
+			}
+		}
+	}
+	
+	i = 0;
+	while(i<bullets.size()) {
+		if(!bullets.at(i).is_empty()) {
+			if(check_collision(bullets.at(i).get_x(), bullets.at(i).get_y(), map_y)) {
+				bullets.at(i).set_empty();
+			}
+			for(auto& enemy : enemies) {
+				if(enemy.bullet_hit(bullets.at(i).get_x(), bullets.at(i).get_y())) {
+					bullets.at(i).set_empty();
+				}
+			}
+		}
+		
+		i++;
+	}
+	for(auto& bullet : bullets) {
+		bullet.move_bullet();
+	}
+	engine.get()->updateSpritesInScene();
 }

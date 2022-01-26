@@ -11,13 +11,16 @@
 #include <libgba-sprite-engine/gba/tonc_memdef.h>
 #include <libgba-sprite-engine/gba_engine.h>
 #include <libgba-sprite-engine/gba/tonc_core.h>
-#include "level_one.h"
-#include "sprites.h"
-#include "guy.h"
+#include "figures.h"
 #include "stage1.h"
 #include "SpiderDance.h"
+#include "ending_screen.h"
+#include "failed.h"
 
 #include "bullets.h"
+#include "enemies.h"
+#include "glock.h"
+#include "shotgun.h"
 
 #define MAP_WIDTH GBA_SCREEN_WIDTH / 8
 #define MAP_HEIGHT GBA_SCREEN_HEIGHT / 8
@@ -28,19 +31,23 @@ private:
     std::unique_ptr<Background> stage1;
 	std::unique_ptr<AffineSprite> player;
 	std::unique_ptr<Sprite> bulletSprite;
-	std::vector<std::unique_ptr<Sprite>> bullets;
+	std::unique_ptr<Sprite> enemy;
+	std::vector<Enemies> enemies;
+	std::vector<Bullets> bullets;
+	Gun *gun = new Glock();
 	
 	SpriteBuilder<Sprite> builder;
-	std::unique_ptr<SpriteBuilder<Sprite>> spriteBuilder;
 	SpriteBuilder<AffineSprite> affineBuilder;
 
 	short rotate_step = 128;
 	short player_rot_step = 0;
-	short player_rotate = 0x4000;
+	int player_rotate = 0x4000;
 	short player_x = GBA_SCREEN_WIDTH/2 - 16;
 	short player_y = GBA_SCREEN_HEIGHT - 32;
     int map_x = 0;
 	int map_y = 0;
+	bool ris_edge = 0;
+	short i = 0;
 public:
     LevelOne(std::shared_ptr<GBAEngine> engine) : Scene(engine), map_x(0), map_y(351) {}
 
@@ -49,7 +56,6 @@ public:
 	
 	short get_map_pos(short pos_x, short pos_y, short pos_map);
 	bool check_collision(short next_pos_x, short next_pos_y, short next_pos_map);
-	void create_bullet();
 
     void load() override;
     void tick(u16 keys) override;

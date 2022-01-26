@@ -30,6 +30,7 @@ The song heard in this game is "Spider dance" by Toby Fox from the RPG game Unde
 <img src="https://github.com/Jettypanini/gba-sprite-engine/blob/master/JethroPans_TDShooter/img/screenshot.PNG">
 
 ## Domain model
+<img src="https://github.com/Jettypanini/gba-sprite-engine/blob/master/JethroPans_TDShooter/img/domain_model.png">
 
 ## Authors
 * *Wouter Groeneveld* - Lecturer - [GitHub](https://github.com/wgroeneveld)

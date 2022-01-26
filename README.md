@@ -1,7 +1,7 @@
 
 ## TDShooter using gba-sprite-engine
 
-TDShooter is a top-down shooter game built for the GameBoy Advance by [Jethro Pans](https://github.com/Jettypanini) as a project for the course "Software design with C/C++". This project started form the [gba-sprite-engine](https://github.com/wgroeneveld/gba-sprite-engine) provided by the lecturer [Wouter Groeneveld](https://github.com/wgroeneveld).
+TDShooter is a top-down shooter game built for the GameBoy Advance by [Jethro Pans](https://github.com/Jettypanini) as a project for the course "Software design with C/C++". This project started form the [gba-sprite-engine](https://github.com/wgroeneveld/gba-sprite-engine) provided by the lecturer [Wouter Groeneveld](https://github.com/wgroeneveld). The code for this project can be observed in the file "JethroPans_TDShooter".
 
 ## Game description
 In the game the player controls the character named Guy who has to pass a forest that is flooded with zombified machops. If the player gets too close to the zombified machops he dies. The zombified machops can be killed using the gun. The player possesses a normal glock and a shotgun. The glock shoots one bullet at a time, however can shoot continuously. The shotgun shoots five bullets at a time, however has to wait until the last bullets disappeared.

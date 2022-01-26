@@ -29,7 +29,19 @@ The song heard in this game is "Spider dance" by Toby Fox from the RPG game Unde
 <img src="https://github.com/Jettypanini/gba-sprite-engine/blob/master/JethroPans_TDShooter/img/screenshot1.PNG">
 <img src="https://github.com/Jettypanini/gba-sprite-engine/blob/master/JethroPans_TDShooter/img/screenshot.PNG">
 
-## 
+## Domain model
+
+## Authors
+* *Wouter Groeneveld* - Lecturer - [GitHub](https://github.com/wgroeneveld)
+* *Jethro Pans* - Student - [Github](https://github.com/Jettypanini)
+
+## Used tools
+* high-level object-oriented Gameboy Advance sprite engine library: [gba-sprite-engine](https://github.com/wgroeneveld/gba-sprite-engine)
+* GBA image transmogrifier: [Grit](https://www.coranac.com/man/grit/html/grit.htm)
+* Sound to GBA file converter: [Audacity](https://www.audacityteam.org/download/)
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## References
 Machop sprite: [https://www.spriters-resource.com/game_boy_advance/pokemonfireredleafgreen/sheet/3711/](https://www.spriters-resource.com/game_boy_advance/pokemonfireredleafgreen/sheet/3711/)

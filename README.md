@@ -30,7 +30,7 @@ The song heard in this game is "Spider dance" by Toby Fox from the RPG game Unde
 <img src="https://github.com/Jettypanini/gba-sprite-engine/blob/master/JethroPans_TDShooter/img/screenshot.PNG">
 
 ## Domain model
-When starting the game, the player can see the home screen. In this home screen the playable character can be seen shooting a bullet at the zombified machop, summarizing the game. After pressing the "Start" button the level starts. The background "stage1", the music "SpiderDance" and the sprites "figures" are being loaded.
+When starting the game, the player can see the home screen. In this home screen the playable character can be seen shooting a bullet at the zombified machop, summarizing the game. After pressing the "Start" button the level starts. The background "stage1", the music "SpiderDance" and the sprites "figures" are being loaded. If the player shoots at a zombified mashop, the function shoot() reacts as the player is holding a glock or shotgun. Both are child classes of the abstract class gun. The bullets and enemies shown on the screen are vectors of the objects with the same name. Each object holds information involving the movement, position and whether it can be seen or not. If the player dies, the screen shows he failed. By pressing the "Start" button the player can return to the home screen. Same goes for the ending screen if the player completes the level.
 <img src="https://github.com/Jettypanini/gba-sprite-engine/blob/master/JethroPans_TDShooter/img/domain_model.png">
 
 ## Authors
